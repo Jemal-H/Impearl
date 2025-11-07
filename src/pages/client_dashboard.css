@@ -5,8 +5,11 @@ body {
   background-color: #f5f5f5;
 }
 
+/* ============================================
+   NAVBAR STYLES
+   ============================================ */
 .navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   background: white;
@@ -30,6 +33,43 @@ body {
   border-radius: 5px;
 }
 
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Navigation Icon Links */
+.nav-icon-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+  margin-right: 0;
+}
+
+.nav-icon-link:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+.nav-icon-link svg {
+  transition: stroke 0.2s;
+}
+
+.nav-icon-link:hover svg {
+  stroke: #007bff;
+}
+
+.nav-icon-link span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .logout-btn {
   background: black;
   color: white;
@@ -45,6 +85,9 @@ body {
   background: #333;
 }
 
+/* ============================================
+   DASHBOARD LAYOUT
+   ============================================ */
 .loading {
   display: flex;
   justify-content: center;
@@ -66,6 +109,9 @@ body {
   padding: 20px;
 }
 
+/* ============================================
+   PROFILE CARD
+   ============================================ */
 .profile-card {
   background: white;
   border-radius: 15px;
@@ -85,7 +131,7 @@ body {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: #2C7A7B;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,8 +184,14 @@ body {
 .profile-name {
   font-size: 28px;
   color: #5A6C7D;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-weight: 600;
+}
+
+.profile-email {
+  color: #718096;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .profile-info {
@@ -147,9 +199,17 @@ body {
   margin-top: 20px;
 }
 
+.info-section h3 {
+  font-size: 18px;
+  color: #2D3748;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #E2E8F0;
+}
+
 .info-item {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   padding: 15px 10px;
   border-bottom: 1px solid #E2E8F0;
   color: #4A5568;
@@ -160,11 +220,21 @@ body {
   border-bottom: none;
 }
 
-.info-icon {
-  margin-right: 15px;
-  font-size: 18px;
+.info-label {
+  font-weight: 600;
+  color: #2D3748;
 }
 
+.info-value {
+  color: #4A5568;
+  text-align: right;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+
+/* ============================================
+   BIO/WELCOME CARD
+   ============================================ */
 .bio-card {
   background: white;
   border-radius: 15px;
@@ -179,72 +249,208 @@ body {
   margin-bottom: 20px;
 }
 
-.bio-display p {
+.bio-card p {
   color: #4A5568;
   line-height: 1.8;
   font-size: 16px;
   margin-bottom: 20px;
-  min-height: 100px;
 }
 
-.bio-textarea {
-  width: 100%;
-  padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+.bio-card ul {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.bio-card ul li {
+  color: #4A5568;
+  margin-bottom: 10px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-primary {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   EDIT PROFILE MODAL
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #2D3748;
+  font-size: 24px;
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
   font-family: "Raleway", sans-serif;
-  resize: vertical;
-  margin-bottom: 15px;
 }
 
-.bio-textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
-  border-color: #2C7A7B;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
-.bio-actions {
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+/* Profile Picture Preview */
+.profile-picture-preview {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-picture-preview img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+/* File Input Styling */
+.file-input-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.file-selected-text {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Modal Button Group */
+.modal-button-group {
   display: flex;
   gap: 10px;
+  justify-content: flex-end;
+  margin-top: 30px;
 }
 
-.btn-edit,
-.btn-save,
-.btn-cancel {
-  padding: 10px 20px;
+/* Modal Buttons */
+.modal-btn {
+  padding: 10px 24px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 600;
-  transition: background-color 0.3s;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-.btn-edit {
-  background: #2C7A7B;
+.modal-btn:hover {
+  transform: translateY(-1px);
+}
+
+.modal-btn:active {
+  transform: translateY(0);
+}
+
+.modal-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.modal-btn-cancel {
+  background-color: #6c757d;
   color: white;
 }
 
-.btn-edit:hover {
-  background: #234E52;
+.modal-btn-cancel:hover:not(:disabled) {
+  background-color: #5a6268;
 }
 
-.btn-save {
-  background: black;
+.modal-btn-save {
+  background-color: #28a745;
   color: white;
 }
 
-.btn-save:hover {
-  background: #333;
+.modal-btn-save:hover:not(:disabled) {
+  background-color: #218838;
 }
 
-.btn-cancel {
-  background: #E2E8F0;
-  color: #2D3748;
-}
-
-.btn-cancel:hover {
-  background: #CBD5E0;
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+  .navbar-links {
+    gap: 10px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -254,5 +460,41 @@ body {
 
   .profile-card {
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    gap: 5px;
+  }
+
+  /* Hide text labels on mobile, show only icons */
+  .nav-icon-link span {
+    display: none;
+  }
+  
+  .nav-icon-link {
+    padding: 8px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+  }
+  
+  .modal-button-group {
+    flex-direction: column;
+  }
+  
+  .modal-btn {
+    width: 100%;
+  }
+
+  .profile-picture-preview {
+    flex-direction: column;
+  }
+
+  .info-value {
+    max-width: 50%;
   }
 }
